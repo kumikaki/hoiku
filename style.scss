@@ -1,0 +1,1376 @@
+$blue: #2EBEE5;
+$gray: #707070;
+
+@mixin margin($Value) {
+    margin-bottom: $Value;
+}
+
+@mixin font {
+    font-family: heisei-maru-gothic-std, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+@mixin whiteBack {
+    text-align: left;
+    background-color: rgba(255, 255, 255, .6);
+    border-radius: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: fot-seurat-pron, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 80%;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+}
+
+h3 {
+    font-family: heisei-maru-gothic-std, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+h4,h6 {
+    font-family: heisei-maru-gothic-std, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h4 {
+    font-size: 30px;
+    color: #374E38;
+
+    &::after {
+        content: '';
+        display: block;
+        margin: 10px auto 20px auto;
+        width: 75px;
+        height: 2px;
+        background: #000;
+    }
+}
+
+h5 {
+    @include margin(10px);
+    color: #70A81D;
+}
+
+h6 {
+    font-size: 33px;
+}
+
+a {
+    text-decoration: none;
+    color: $gray;
+
+    &:hover {
+        color: #000;
+    }
+}
+
+p {
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.header {
+    width: 100%;
+
+    &-left {
+        padding-top: 10px;
+
+        &-logo {
+            padding: 0 0 10px 0;
+
+            img {
+                width: 300px;
+            }
+        }
+    }
+
+    &-wrap {
+        position: fixed;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 30px;
+        width: 100vw;
+        background-color: rgba(255, 255, 255, .9);
+        box-shadow: 0 5px 5px rgba(0, 0, 0, .2);
+    }
+
+    &-nav {
+        &-list {
+            display: flex;
+            margin-bottom: 10px;
+            border-bottom: 1px solid $gray;
+            
+            li {
+                margin-left: 20px;
+                margin-bottom: 10px;
+                @include font;
+                font-size: 15px;
+            }
+        }
+
+        &-contact {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            &-list {
+                display: flex;
+
+                li {
+                    margin-left: 20px;                    
+                }
+            }
+
+            .login-btn {
+                margin-left: 20px;
+                width: 150px;
+                height: 35px;
+                text-align: center;
+                background: $blue;
+                border-radius: 10px;
+
+                a {
+                    line-height: 35px;
+                    color: #fff;
+                }
+
+                img {
+                    width: 25px;
+                }
+
+                &:hover {
+                    background-color: #2E82E5;
+                }
+            }
+        }
+    }
+}
+
+#header-wrap {
+
+    &.UpMove {
+        animation: UpAnime 0.3s forwards;
+
+        @keyframes UpAnime {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: rotateY(-120px);
+            }
+        }
+    }
+
+    &.DownMove {
+        animation: DownAnime 0.3s forwards;
+
+        @keyframes DownAnime {
+            from {
+                opacity: 0;
+                transform: translateY(-120px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+}
+
+.sp-header-nav {
+    position: absolute;
+    top: 0;
+    position: fixed;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 10%;
+    width: 100vw;
+    background-color: #fff;
+    display: none;
+
+
+    .header-nav {
+        &-list {
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            width: 60%;
+
+            li {
+                margin: 0;
+                font-size: 18px;
+            }
+        }
+
+        &-contact {
+            flex-direction: column-reverse;
+            gap: 20px;
+            margin-bottom: 20px;
+
+            &-list {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+
+                li {
+                    margin: 0;
+                }
+            }
+
+            .login-btn {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.sp-nursery-btn {
+    position: relative;
+
+    &-group {
+        width: 100vw;
+        display: flex;
+    }
+}
+
+.sp-menu-back {
+    display: none;
+    position: fixed;
+    z-index: 500;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.menu-btn {
+    display: none;
+    position: fixed;
+    z-index: 1100;
+    top: 0;
+    right: 0;
+    width: 130px;
+    cursor: pointer;
+
+    &-text {
+        content: '';
+        position: absolute;
+        top: 10px;
+        right: 30px;
+        background: #000;
+    }
+
+    span {
+        position: absolute;
+        display: block;
+        top: 0px;
+        right: 0;
+        width: 35px;
+        height: 3px;
+        background-color: #fff;
+        border-radius: 1.5px;
+        transition: all 0.5s;
+
+        &:nth-of-type(2) {
+            top: 8px;
+        }
+
+        &:nth-of-type(3) {
+            top: 16px;
+
+            &::after {
+                content: 'メニュー';
+                position: absolute;
+                top: 8px;
+                width: 40px;
+                color: #fff;
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+.menu-btn.active {
+
+    .menu-btn-text {
+        transform: rotate(360deg);
+    }
+
+    span {
+        &:nth-of-type(1) {
+            width: 25px;
+            right: 8px;
+            top: 9px;
+            transform: rotate(410deg);
+        }
+
+        &:nth-of-type(2) {
+            width: 25px;
+            right: 8px;
+            top: 9px;
+            transform: rotate(-45deg);
+        }
+
+        &:nth-of-type(3) {
+            background-color: rgba(0, 0, 0, 0);
+
+            &::after {
+                content: 'とじる';
+            }
+        }
+    }
+}
+
+.side-application {
+    position: absolute;
+    position: fixed;
+    z-index: 300;
+    top: 20%;
+    right: -20px;
+
+    div {
+        margin-top: 30px;
+        padding: 30px 0;
+        width: 80px;
+        height: 250px;
+        background: #fff;
+        border: solid $blue;
+        border-width: 5px 0px 5px 5px ;
+        border-radius: 30px 0 0 30px;
+
+        &:hover {
+            transform: translateX(-20px);
+        }
+
+        p {
+            @include font;
+            margin-left: 15px;
+            margin-bottom: 10px;
+            -ms-writing-mode: tb-rl;
+            writing-mode: vertical-rl;
+            font-size: 15px;
+            color: $blue;
+        }
+    }
+    
+    &-visit {
+        img {
+            margin-left: 10px;
+            width: 40px;
+        }
+    }
+
+    &-download {
+        img {
+            margin-left: 8px;
+            width: 35px;
+        }
+    }
+}
+
+.sp-menu-tree {
+    position: absolute;
+    bottom: 15%;
+    left: 15px;
+    width: 100px;
+}
+
+.hero {
+    position: relative;
+    @include margin(100px);
+    padding-top: 100px;
+    width: 100vw;
+    height: 100vh;
+
+    &-catch {
+        max-width: 800px;
+        position: absolute;
+        left: 20px;
+        bottom: 50px;
+    }
+
+    &-img {
+        width: 100vw;
+        height: 100%;
+        background: url(./imges/hero-1.jpg) no-repeat center;
+        background-size: cover;
+    }
+
+}
+
+.top-group {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    width: 90vw;
+    margin: 0 auto;
+    @include margin(30px);
+
+    .page-link {
+        display: flex;
+        gap: 20px;
+        width: 1200px;
+        margin: 0 auto;
+
+        img:hover {
+            transform: scale(1.1, 1.1)
+        }
+    }
+}
+
+.scroll-link {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 0 auto;
+    @include margin(100px);
+    width: 1200px;
+    text-align: center;
+    text-decoration: underline solid $gray;
+
+    p {
+        font-size: 16px;
+    }
+
+    .arrow {
+        width: 15px;
+        height: 15px;
+        border-bottom: solid 2px $gray;
+        border-right: solid 2px $gray;
+        transform: rotate(45deg);
+    }
+}
+
+.message {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 auto;
+    @include margin(100px);
+    width: 1200px;
+    position: relative;
+
+    &-group{
+        position: absolute;
+        left: 10%;
+
+        h3 {
+            font-size: 40px;
+        }
+
+        &-text {
+            margin-bottom: 20px;
+            padding: 10px;
+            width: 450px;
+            line-height: 2;
+            background-color: rgba(255, 255, 255, .5);
+            border-radius: 10px;
+        }
+    }
+
+    img {
+        width: 700px;
+    }
+}
+
+.section-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
+    width: 200px;
+    height: 50px;
+    background-color: #fff;
+    border: 1px solid $gray;
+    border-radius: 25px;
+    color: $gray;
+    
+    &-arrow {
+        width: 10px;
+        height: 10px;
+        border-top: solid 2px #c4c4c4;
+        border-right: solid 2px #c4c4c4;
+        transform: rotate(45deg);
+    }
+
+    p {
+        margin-right: 35px;
+        text-align: center;
+        line-height: 50px;
+    }
+
+    &:hover {
+        background: $gray;
+        color: #fff;
+        transition: all 0.3s;
+    }
+}
+
+.philosophy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    @include margin(100px);
+    width: 100vw;
+    height: 600px;
+    background: url(./imges/philosophy_back.jpg) no-repeat center;
+    background-size: cover;
+
+    &-group {
+
+        &-content {
+            h6 + h6 {
+                margin-bottom: 20px;
+            }
+
+            &-text {
+                margin: 0 auto;
+                width: 400px;
+                text-align: left;
+    
+                > p {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}
+
+@mixin policy {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.policy {
+    margin: 0 auto;
+    @include margin(100px);
+    width: 1200px;
+    text-align: center;
+
+    &-title {
+        margin-bottom: 100px;
+    }
+
+    &-back-img {
+        width: 100%;
+        background: url(./svg/policy-back.svg) no-repeat bottom center;
+        background-size: contain;
+    }
+
+    p {
+        font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+    }
+}
+
+.policy-joy {
+    @include policy;
+
+    &-top {
+        display: flex;
+        align-items: center;
+        @include margin(50px);
+
+        img {
+            width: 700px;
+        }
+
+        &-content {
+            position: absolute;
+            left: 55%;
+            padding: 20px;
+            width: 500px;
+            @include whiteBack;
+
+            h6:nth-of-type(3) {
+                margin-bottom: 10px;
+            }
+            p ~ p {
+                margin-top: 10px;
+            }
+        }
+    }
+
+    &-bottom {
+        @include margin(50px);
+
+        img {
+            margin-left: 30%;
+            width: 500px;
+        }
+    }
+}
+
+.policy-study {
+    @include policy;
+    @include margin(150px);
+    position: relative;
+
+    &-inner {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+
+        &-content {
+            position: absolute;
+            left: 10%;
+            padding: 20px;
+            @include whiteBack;
+        }
+
+        img {
+            margin-right: 50px;
+            width: 700px;
+        }
+    }
+
+    &-content {
+        position: absolute;
+        bottom: -100px;
+        left: 5%;
+        padding: 20px;
+        width: 500px;
+        @include whiteBack;
+
+        h6 + h6 {
+            margin-bottom: 10px;
+        }
+        p ~ p {
+            margin-top: 10px;
+        }
+    }   
+}
+
+.policy-eat {
+    @include policy;
+    @include margin(50px);
+
+    &-top {
+        display: flex;
+        position: relative;
+        @include margin(200px);
+
+        &-content {
+            position: absolute;
+            bottom: -250px;
+            right: 10%;
+            padding: 20px;
+            width: 500px;
+            @include whiteBack;
+    
+            h6 + h6 {
+                margin-bottom: 10px;
+            }
+            p ~ p {
+                margin-top: 10px;
+            }
+        } 
+
+        img {
+            margin-left: 50px;
+            width: 700px;
+        }
+    }
+
+    &-bottom {
+        display: flex;
+        justify-content: flex-start;
+
+        img {
+            margin-left: 12%;
+            width: 500px;
+        }
+    }
+}
+
+.nursery {
+    display: flex;
+    text-align: center;
+    padding: 50px 0;
+    width: 100vw;
+    background-color: #F8EDCF;
+    @include margin(100px);
+
+    &-back {
+        width: 180px;
+    }
+
+    &-group {
+        margin: 0 auto;
+        padding: 30px;
+        width: 1200px;
+        background-color: #fff;
+        border-radius: 20px;
+
+        &-title {
+            margin-bottom: 50px;
+        }
+    }
+
+    &-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: flex-end;
+        gap: 20px;
+    }
+
+    &-box {
+
+        img {
+            margin-bottom: 10px;
+        }
+    
+        &-name-top {
+            display: block;
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #70A81D;
+        }
+
+        &-name-center {
+            font-size: 20px;
+            color: #FD347A;
+
+            &-detail {
+                display: block;
+                margin-bottom: 10px;
+                color: #FD347A;
+            }
+        }
+
+        &-name-bottom {
+            font-size: 20px;
+            color: #FD7622;
+
+            &-detail {
+                display: block;
+                margin-bottom: 10px;
+                color: #FD7622;
+            }
+        }
+
+        &-about {
+            font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+            text-align: left;
+            text-align: justify;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            min-height: 180px;
+            border-bottom: solid 1px $gray;
+            color: $gray;
+        }
+
+        &-address {
+            font-family: '游ゴシック体','メイリオ','MS Pゴシック','Century Gothic',sans-serif;
+            text-align: left;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: $gray;
+        }
+
+        .section-btn {
+            margin: 0 auto;
+            width: 190px;
+            height: 50px;
+        }
+    }    
+}
+
+.btnWrap {
+    display: none;
+    margin: 0 auto;
+    width: 200px;
+    height: 50px;
+    background-color: #2EBEE5;
+    border-radius: 10px;
+    
+    p {
+        color: #FFF;
+        font-weight: bold;
+        line-height: 50px;
+    }
+}
+
+.nursery-wrap.open+.btnWrap .more-btn {
+    font-size: 0;
+}
+
+.nursery-wrap.open+.btnWrap .more-btn::after {
+    content: '閉じる';
+    font-size: 18px;
+}
+
+.contact {
+    text-align: center;
+    width: 100vw;
+    @include margin(100px);
+
+    &-about {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        gap: 30px;
+
+        &-tel {
+            text-align: left;
+
+            .tel-text {
+                color: #2EBEE5;
+            }
+
+            .tel-number {
+                font-family: 'DIN Alternate';
+                font-size: 35px;
+
+                p {
+                    color: black;
+
+                    &:hover {
+                        color: $gray;
+                    }
+                }
+            }
+
+            img {
+                margin-right: 5px;
+                width: 30px;
+            }
+
+            div {
+                display: flex;
+            }
+        }
+
+        &-mail {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            background: $blue;
+            width: 220px;
+            height: 50px;
+            border-radius: 25px;
+
+            img {
+                width: 25px;
+            }
+
+            p {
+                color: #fff;
+            }
+
+            &:hover {
+                background-color: #2E82E5;
+            }
+        }
+    }
+
+    .banner {
+        width: 550px;
+
+        &:hover {
+            transform: translatey(0.1875em);
+            opacity: 0.8;
+        }
+    }
+}
+
+.topup-btn {
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    position: fixed;
+    opacity: 0;
+
+    &-text {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform:translate(-50%,-50%);
+        color: #fff;
+
+        .arrow-up {
+            margin-left: 10px;
+            margin-top: 5px;
+            width: 10px;
+            height: 10px;
+            border-top: solid 2px #fff;
+            border-left: solid 2px #fff;
+            transform: rotate(45deg);
+        }
+    }
+
+    img:hover {
+        transform: scale(1.1,1.1)
+    }
+}
+
+#topup-btn {
+    &.UpMove {
+        animation: UpAnime 0.3s forwards;
+
+        @keyframes UpAnime {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: rotateY(-120px);
+            }
+        }
+    }
+
+    &.DownMove {
+        animation: DownAnime 0.3s forwards;
+
+        @keyframes DownAnime {
+            from {
+                opacity: 0;
+                transform: translateY(-120px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+}
+
+.footer {
+    width: 100vw;
+    background-color: #DDF7B6;
+    padding: 50px 0 0 0;
+
+    .header-nav {
+        margin: 0 auto;
+        @include margin(60px);
+        width: 1200px;
+
+        &-list {
+            justify-content: space-around;
+            @include margin(30px);
+            padding-bottom: 30px;
+        }
+
+        &-contact {
+            justify-content: center;
+            align-items: center;
+
+            &-list li {
+                margin-left: 40px;
+            }
+
+            .login-btn {
+                margin-left: 40px;
+            }
+        }
+    }
+
+    &-bottom {
+        display: flex;
+        justify-content: space-around;
+        width: 90vw;
+        margin: 0 auto;
+
+        &-content {
+            width: 1200px;
+            text-align: center;
+            margin: 0 auto;
+            padding: 30px 0;
+
+            p {
+                margin-bottom: 5px;
+            }
+        }
+
+        &-copy-right {
+            background: #70A81D;
+            text-align: center;
+            color: #fff;
+            padding: 5px 0;
+        }
+    }
+
+    .tree-icon-bottom-left {
+        margin-bottom: 10px;
+        width: 250px;
+    }
+
+    .tree-icon-bottom-right {
+        margin: 0 25px;
+        width: 150px;
+    }
+
+    .corporate-logo {
+        margin-bottom: 10px;
+        width: 200px;
+    }
+
+}
+
+@media screen and (max-width:960px) {
+    .page-link,.scroll-link,
+    .message,
+    .footer .header-nav,.footer-bottom-content {
+        width: 700px;
+    }
+
+    .top-group {
+        gap: 30px;
+    }
+
+    .policy, .nursery-group {
+        width: 90vw;
+    }
+
+    .hero-catch {
+        img {
+            max-width: 330px;
+        }
+    }
+
+    .header-nav-list li {
+        font-size: 14px;
+    }
+
+    .message {
+        flex-direction: column;
+
+        &-img {
+            margin-bottom: 30px;
+        }
+        
+        &-group {
+            position: initial;
+        }
+    }
+
+    .policy-joy-top {
+        position: relative;
+        margin-bottom: 250px;
+
+        &-content {
+            top: 85%;
+            left: 30%;
+        }
+    }
+
+    .policy-eat-top img {
+        width: 600px;
+    }
+
+    .nursery {
+        &-back {
+            display: none;
+        }
+
+        &-box-about {
+            height: 230px;
+        }
+    }
+
+    .footer .tree-icon-bottom-right {
+        width: 100px;
+    }
+
+    .footer .tree-icon-bottom-left {
+        width: 150px;
+    }
+
+    .topup-btn {
+        width: 150px;
+        top: 85%;
+        right: 8%;
+         
+        &-text {
+            justify-content: center;
+            width: 190px;
+        }
+    }
+}
+
+@media screen and (max-width:520px) {
+
+    h4 {
+        font-size: 22px;
+    }
+
+    h6 {
+        font-size: 25px;
+    }
+
+    .page-link,.scroll-link,
+    .message,.policy,.nursery-group,
+    .footer .header-nav,.footer-bottom-content {
+        width: 350px;
+    }
+
+    .header {
+        &-wrap {
+            padding: 5px 10px 0 10px;
+
+            a {
+                font-size: 11px;
+            }
+        }
+
+        &-left {
+            padding-top: 0;
+
+            &-logo img {
+                width: 250px;
+            }
+        }
+    }
+
+    .header-nav {
+        display: none;
+    }
+
+    .side-application {
+        z-index: 1000;
+        top: 10%;
+        display: none;
+
+        div {
+            margin-top: 10px;
+            padding: 10px 0;
+            height: 200px;
+            border-radius: 20px 0 0 20px;
+
+            p {
+                margin-left: 10px;
+            }
+        }
+
+        &-visit img {
+            transform: rotate(20deg);
+            margin: 0;
+            width: 48px;
+        }
+
+        &-download img {
+            transform: rotate(20deg);
+            margin: 0;
+            width: 40px;
+        }
+    }
+
+    .menu-btn {
+        display: inline-block;
+    }
+
+    .hero {
+        height: 65vh;
+        margin-bottom: 20px;
+        padding-top: 70px;
+
+        &-catch {
+            left: 10px;
+            bottom: 15px;
+        }
+    }
+
+    .top-group .page-link {
+        gap: 5px;
+    }
+
+    .tree-item {
+        display: none;
+    }
+
+    .scroll-link {
+        margin-bottom: 40px;
+    
+        p {
+            font-size: 13px;
+        }
+
+        .arrow {
+            width: 10px;
+            height: 10px;
+        }
+    }
+
+    .philosophy {
+        margin-bottom: 50px;
+
+        &-group-content-text {
+            margin: 0 auto;
+            margin-top: 20px;
+            width: 300px;
+
+            & > p {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .message {
+        margin-bottom: 50px;
+
+        &-group {
+            &-text {
+                width: 300px;
+            }
+
+            h3 {
+                font-size: 25px;    
+            }
+        }
+
+        img {
+            width: 300px;
+        }
+    }
+
+    .policy {
+        h6 {
+            font-size: 22px;
+        }
+
+        &-back-img {
+            background-repeat: repeat-y;
+        }
+    }
+
+    .policy-title {
+        margin-bottom: 50px;
+    }
+
+    .policy-joy-top,
+    .policy-study-inner,
+    .policy-eat-top {
+        flex-direction: column;
+        margin-bottom: 30px; 
+    }
+
+    .policy-study {
+        margin-bottom: 30px;
+    }
+
+    .policy-joy-top img,
+    .policy-study-inner img,
+    .policy-eat-top img {
+        width: 300px;
+    }
+    
+
+    .policy-joy-bottom img,
+    .policy-eat-bottom img {
+        width: 250px;
+    }
+
+    .policy-joy-top-content,
+    .policy-study-content,
+    .policy-eat-top-content {
+        width: 350px;
+        position: initial;
+    }
+
+    .nursery {
+ 
+        &-wrap {
+           grid-template-columns: 1fr;
+           gap: 50px;
+           height: 560px;
+           overflow: hidden;
+           transition:all 0.3s;
+
+           &.open {
+            height: 1770px;
+           }
+        }
+
+        &-box {
+
+            &-about {
+                height: 200px;
+            }
+        }
+    }
+
+    .btnWrap {
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    .contact {
+    
+        &-about {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        & > p {
+            width: 54%;
+            margin: 0 auto;
+        }
+
+        .banner {
+            width: 300px;
+        }
+    }
+
+    .footer {
+        .header-nav {
+            display: none;
+        }
+
+        &-bottom {
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .tree-icon-bottom-left {
+            display: none;
+        }
+    }
+
+    .topup-btn {
+        width: 150px;
+        top: 80%;
+        right: 5%;
+         
+        &-text {
+            justify-content: center;
+            width: 190px;
+        }
+    }
+}
+
